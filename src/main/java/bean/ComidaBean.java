@@ -27,6 +27,13 @@ public class ComidaBean {
 		listaComida = ComidaDao.buscarTodos();
 		return listaComida;
 	}
+	
+	public String deletar() {
+		ComidaDao.deletar(comida);
+		//sucesso("Sucesso", "Agendamento removido !");
+		listaComida = ComidaDao.buscarTodos();
+		return null;
+	}
 
 	
 	//Getter and Setters

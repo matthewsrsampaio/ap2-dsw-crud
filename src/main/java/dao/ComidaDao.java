@@ -12,19 +12,28 @@ public class ComidaDao {
 	public static void salvar(Comida comida) {
 		System.out.println("Double esperado: "+comida.getPrecoPorKg());
 		System.out.println("Tipo de comida esperado: "+comida.getTipoComida());
-		EntityManager entityManager = JPA.criarEntityManager(); //Esse tipo de instanciação fica dentro do pq para cada chamada do método eu vou criar uma nova instância desse carinha. 
-		entityManager.getTransaction().begin();
-		entityManager.persist(comida);
-		entityManager.getTransaction().commit();
-		entityManager.close();
+		EntityManager em = JPA.criarEntityManager(); //Esse tipo de instanciação fica dentro do pq para cada chamada do método eu vou criar uma nova instância desse carinha. 
+		em.getTransaction().begin();
+		em.persist(comida);
+		em.getTransaction().commit();
+		em.close();
 	}
 	
 	public static List<Comida> buscarTodos(){
-		EntityManager entityManager = JPA.criarEntityManager();
-		Query query = entityManager.createQuery("select c from Comida c");
+		EntityManager em = JPA.criarEntityManager();
+		Query query = em.createQuery("select c from Comida c");
 		List<Comida> lista = query.getResultList();
-		entityManager.close();
+		em.close();
 		return lista;
+	}
+
+	public static void deletar(Comida comida) {
+		EntityManager em = JPA.criarEntityManager();
+		em.getTransaction().begin();
+		comida = em.find(Comida.class, comida.getId());
+		em.remove(comida);
+		em.getTransaction().commit();
+		em.close();
 	}
 	
 }

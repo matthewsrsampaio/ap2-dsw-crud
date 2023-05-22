@@ -12,6 +12,10 @@
 	</h:head>
 	
 	<h:body>
+		<div>
+			<button onclick="window.location.href = 'listagem.xhtml'">Listagem</button>
+	  	</div>
+	  	<br/>
 		<h:form id="homeForm">
 			<p:panel header="Cadastro de Comida">
 				<p:panelGrid columns="1">
@@ -23,9 +27,6 @@
 					<p:commandButton value="Salvar" action="#{comidaBean.salvar()}"/>
 				</p:panelGrid>
 			</p:panel>
-		</h:form>
-		<div>
-			<button onclick="window.location.href = 'listagem.xhtml'">Listagem</button>
-	  	</div>	
+		</h:form>	
 	</h:body>
 </html>
