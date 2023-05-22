@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+    	<title>L i s t a g e m</title>
+	</h:head>
+
+	<h:body>
+	
+		<h:form>
+				<p:dataTable value="#{comidaBean.listaComida}" var="lis" rowKey="#{lis.id}" id="listaTabela">
+				<f:facet name="header"> Cadastro de comidas </f:facet>
+				<p:column headerText="ID"><p:outputLabel value="#{lis.id}"/></p:column>
+				<p:column headerText="Tipo de Comida"><p:outputLabel value="#{lis.tipoComida}"/></p:column>
+				<p:column headerText="Preço por Kg"><p:outputLabel value="#{lis.precoPorKg}"/></p:column>
+				<p:column headerText="Data de fabricação"><p:outputLabel value="#{lis.fabricacao}"/></p:column>
+			</p:dataTable>
+		</h:form>
+		
+		<button onclick="window.location.href = 'index.xhtml'">HOME</button>
+	</h:body>
+</html>
