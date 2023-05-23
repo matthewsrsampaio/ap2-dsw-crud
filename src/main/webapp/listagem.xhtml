@@ -8,28 +8,47 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:head>
-    	<title>L i s t a g e m</title>
+    	<title>Listagem</title>
 	</h:head>
 
 	<h:body>
-		<div>
+		<div class="card">
 			<button onclick="window.location.href = 'index.xhtml'">HOME</button>
 		</div>
 		<br/>
-		<h:form>
-			<p:dataTable value="#{comidaBean.listaComida}" var="lis" rowKey="#{lis.id}" id="listaTabela" style="width: 90%; height: 70%;">
-				<f:facet name="header"> Cadastro de comidas </f:facet>
-				<p:column headerText="ID"  style="width: 5%"><p:outputLabel value="#{lis.id}"/></p:column>
-				<p:column headerText="Tipo de Comida"  style="width: 40%"><p:outputLabel value="#{lis.tipoComida}"/></p:column>
-				<p:column headerText="Preço por Kg" style="width: 10%"><p:outputLabel value="#{lis.precoPorKg}"/></p:column>
-				<p:column headerText="Data de fabricação" style="width: 20%"><p:outputLabel value="#{lis.fabricacao}"/></p:column>
+		<br/>
+		<div class="card">
+			<h:form id="form">
+				<p:messages id="messages" showDetail="true" closable="true">
+	            	<p:autoUpdate/>
+	        	</p:messages>
 				
-				<p:column headerText="Deletar" style="width:90px; text-align: center">
-					<p:commandButton value="Deletar" action="#{comidaBean.deletar}" oncomplete="location.reload();">
-						<f:setPropertyActionListener value="#{lis}" target="#{comidaBean.comida}"></f:setPropertyActionListener>
-					</p:commandButton>
-				</p:column>
-			</p:dataTable>
-		</h:form>
+				<p:dataTable id="listaTabela" value="#{comidaBean.listaComida}" var="lis" rowKey="#{lis.id}" style="width: 90%; height: 70%;" selectionMode="single">
+						
+					<f:facet name="header"> Cadastro de comidas
+						<p:commandButton id="Info" value="Descubrir o maior ID" action="#{comidaBean.info(lis)}" styleClass="mr-2 ui-button-warning"/>
+					</f:facet>
+					
+					<p:column id="idColumn" headerText="ID"  style="width: 5%">
+						<p:outputLabel id="idOutput" value="#{lis.id}"/>
+					</p:column>
+					<p:column headerText="Tipo de Comida"  style="width: 40%">
+						<p:outputLabel value="#{lis.tipoComida}"/>
+					</p:column>
+					<p:column headerText="Preço por Kg" style="width: 10%">
+						<p:outputLabel value="#{lis.precoPorKg}"/>
+					</p:column>
+					<p:column headerText="Data de fabricação" style="width: 20%">
+						<p:outputLabel value="#{lis.fabricacao}"/>
+					</p:column>
+										
+					<p:column headerText="Deletar" style="width:90px; text-align: center;">
+						<p:commandButton value="Deletar" action="#{comidaBean.deletar}" oncomplete="location.reload();">
+							<f:setPropertyActionListener value="#{lis}" target="#{comidaBean.comida}"></f:setPropertyActionListener>
+						</p:commandButton>
+					</p:column>				
+				</p:dataTable>				
+			</h:form>
+		</div>
 	</h:body>
 </html>

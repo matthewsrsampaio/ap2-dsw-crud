@@ -11,5 +11,5 @@ public class JPA {
 	public static EntityManager criarEntityManager() {
 		return emf.createEntityManager();
 	}
-
+	
 }

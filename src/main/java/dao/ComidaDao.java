@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
 import entity.Comida;
 import util.JPA;
 
@@ -34,6 +35,13 @@ public class ComidaDao {
 		em.remove(comida);
 		em.getTransaction().commit();
 		em.close();
+	}
+	
+	public static Comida buscarPorId(Integer id) {
+		EntityManager em = JPA.criarEntityManager();
+		Comida comida = em.find(Comida.class, id);
+		em.close();
+		return comida;
 	}
 	
 }

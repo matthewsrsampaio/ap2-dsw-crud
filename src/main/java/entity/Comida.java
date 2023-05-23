@@ -11,6 +11,8 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
 
+
+
 @Entity
 public class Comida {
 
@@ -30,8 +32,8 @@ public class Comida {
 	
 	@Override
 	public String toString() {
-		return "Comida [id=" + id + ", tipoComida=" + tipoComida + ", precoPorKg=" + precoPorKg + ", fabricacao="
-				+ fabricacao + "]\n";
+		return "id=" + id + ", tipoComida=" + tipoComida + ", precoPorKg=" + precoPorKg + ", fabricacao="
+				+ fabricacao + "\n";
 	}
 	
 	public Integer getId() {
