@@ -9,7 +9,6 @@ import javax.faces.event.AjaxBehaviorEvent;
 
 import dao.ComidaDao;
 import entity.Comida;
-import util.MessagesUtil;
 
 @ManagedBean
 public class ComidaBean {
@@ -37,6 +36,11 @@ public class ComidaBean {
 		ComidaDao.deletar(comida);
 		listaComida = ComidaDao.buscarTodos();
 		return null;
+	}
+	
+	public void infoItem(Comida comida) {
+		String texto = ComidaDao.buscarPorId(comida.getId()).toString();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação sobre o Objeto com maior ID => ", texto));
 	}
 	
 	public void info(Comida comida) {

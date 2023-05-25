@@ -8,9 +8,9 @@
 	xmlns:p="http://primefaces.org/ui">
 	
 	<h:head>
+		<link rel="stylesheet"  href="index.css"/>
 		<title>H O M E</title>
 	</h:head>
-	
 	<h:body>
 		<div>
 			<button onclick="window.location.href = 'listagem.xhtml'">Listagem</button>
@@ -24,7 +24,7 @@
 					<p:outputLabel value="Preço por Kg: " for="inputPrecoKg"/>
 					<p:inputText value="#{comidaBean.comida.precoPorKg}" id="inputPrecoKg"/>
 					
-					<p:commandButton value="Salvar" action="#{comidaBean.salvar()}"/>
+					<p:commandButton value="Salvar" action="#{comidaBean.salvar()}" oncomplete="location.reload();"/>
 				</p:panelGrid>
 			</p:panel>
 		</h:form>	
