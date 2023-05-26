@@ -17,7 +17,6 @@ public class ComidaDao {
 			em.getTransaction().commit();
 			em.close();
 		}
-	}
 	
 	public static List<Comida> buscarTodos(){
 		EntityManager em = JPA.criarEntityManager();
