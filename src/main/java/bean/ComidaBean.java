@@ -35,12 +35,13 @@ public class ComidaBean {
 	public String deletar() {
 		ComidaDao.deletar(comida);
 		listaComida = ComidaDao.buscarTodos();
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, " =>", "Deletado com sucesso!"));
 		return null;
 	}
 	
 	public void infoItem(Comida comida) {
 		String texto = ComidaDao.buscarPorId(comida.getId()).toString();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação sobre o Objeto com maior ID => ", texto));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Info =>", texto));
 	}
 	
 	public void info(Comida comida) {
@@ -55,7 +56,7 @@ public class ComidaBean {
 		ComidaDao.buscarPorId(maiorId);
 		
 		String texto = ComidaDao.buscarPorId(maiorId).toString();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Informação sobre o Objeto com maior ID => ", texto));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Informação sobre o Objeto com maior ID => ", texto));
     }
 	
 	//Getter and Setters

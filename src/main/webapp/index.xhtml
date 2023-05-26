@@ -8,25 +8,24 @@
 	xmlns:p="http://primefaces.org/ui">
 	
 	<h:head>
-		<link rel="stylesheet"  href="index.css"/>
 		<title>H O M E</title>
 	</h:head>
 	<h:body>
-		<div>
-			<button onclick="window.location.href = 'listagem.xhtml'">Listagem</button>
-	  	</div>
+		<button onclick="window.location.href = 'listagem.xhtml'">Listagem</button>
 	  	<br/>
 		<h:form id="homeForm">
-			<p:panel header="Cadastro de Comida">
-				<p:panelGrid columns="1">
-					<p:outputLabel value="Tipo de Comida: " for="inputTipoComida"/>
-					<p:inputText value="#{comidaBean.comida.tipoComida}" id="inputTipoComida"/>
-					<p:outputLabel value="Preço por Kg: " for="inputPrecoKg"/>
-					<p:inputText value="#{comidaBean.comida.precoPorKg}" id="inputPrecoKg"/>
-					
-					<p:commandButton value="Salvar" action="#{comidaBean.salvar()}" oncomplete="location.reload();"/>
-				</p:panelGrid>
-			</p:panel>
+			<div style="display: flex; justify-content: center">
+				<p:panel header="Cadastro de Comida">
+					<p:panelGrid columns="1">
+						<p:outputLabel value="Tipo de Comida: " for="inputTipoComida"/>
+						<p:inputText value="#{comidaBean.comida.tipoComida}" id="inputTipoComida"/>
+						<p:outputLabel value="Preço por Kg: " for="inputPrecoKg"/>
+						<p:inputText value="#{comidaBean.comida.precoPorKg}" id="inputPrecoKg"/>
+						
+						<p:commandButton value="Salvar" action="#{comidaBean.salvar()}" oncomplete="location.reload();"/>
+					</p:panelGrid>
+				</p:panel>
+			</div>
 		</h:form>	
 	</h:body>
 </html>

@@ -1,8 +1,11 @@
 @charset "UTF-8";
 
-.centered-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 150px;
+h:body{
+	display: flex;
+	justify-content: center;	
+}
+
+f:facet{
+	display: flex;
+	justify-content: center;
 }

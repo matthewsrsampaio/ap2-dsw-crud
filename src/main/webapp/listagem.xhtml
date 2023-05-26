@@ -8,46 +8,48 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:head>
+		<link rel="stylesheet" href="index.css"/>
     	<title>Listagem</title>
 	</h:head>
 
 	<h:body>
-		<div class="card">
+		<div>
 			<button onclick="window.location.href = 'index.xhtml'">HOME</button>
 		</div>
 		<br/>
-		<br/>
-		<div class="card">
-			<h:form id="form">
-				<p:messages id="messages" showDetail="true" closable="true">
-	            	<p:autoUpdate/>
-	        	</p:messages>
+		<div>
+			<h:form id="form" style="display: flex; justify-content: center">
 				
 				<p:dataTable id="listaTabela" value="#{comidaBean.listaComida}" var="lis" rowKey="#{lis.id}" style="width: 90%; height: 70%;" selectionMode="single">
-						
-					<f:facet name="header"> Cadastro de comidas
-						<p:commandButton id="Info" value="Descubrir o maior ID" action="#{comidaBean.info(lis)}" styleClass="mr-2 ui-button-warning"/>
-					</f:facet>
-					
-					<p:column id="idColumn" headerText="ID"  style="width: 5%">
+						<f:facet name="header"> Cadastro de comidas
+							<div>
+							<br/>
+							<br/>
+								<p:commandButton id="Info" value="Descubrir o maior ID" action="#{comidaBean.info(lis)}" icon="pi pi-bell" styleClass="rounded-button ui-button-warning"/>
+								<p:messages id="messages" showDetail="true" closable="true">
+	            					<p:autoUpdate/>
+	        					</p:messages>
+							</div>
+						</f:facet>
+					<p:column id="idColumn" headerText="ID"  style="width: 10%">
 						<p:outputLabel id="idOutput" value="#{lis.id}"/>
 					</p:column>
-					<p:column headerText="Tipo de Comida"  style="width: 40%">
+					<p:column headerText="Tipo de Comida"  style="width: 20%">
 						<p:outputLabel value="#{lis.tipoComida}"/>
 					</p:column>
 					<p:column headerText="Preço por Kg" style="width: 10%">
 						<p:outputLabel value="#{lis.precoPorKg}"/>
 					</p:column>
-					<p:column headerText="Data de fabricação" style="width: 20%">
+					<p:column headerText="Data de fabricação" style="width: 10%">
 						<p:outputLabel value="#{lis.fabricacao}"/>
 					</p:column>
 					
 					<p:column headerText="Info Item" style="width: 5%">
-						<p:commandButton id="infoItem" value="Info" action="#{comidaBean.infoItem(lis)}" styleClass="mr-2 ui-button-warning"/>
+						<p:commandButton id="infoItem" value="Info" action="#{comidaBean.infoItem(lis)}" icon="pi pi-user" styleClass="rounded-button ui-button-info"/>
 					</p:column>
 										
-					<p:column headerText="Deletar" style="width:90px; text-align: center;">
-						<p:commandButton value="Deletar" action="#{comidaBean.deletar}" oncomplete="location.reload();">
+					<p:column headerText="Deletar" style="width:5%; text-align: center;">
+						<p:commandButton value="Deletar" action="#{comidaBean.deletar}" icon="pi pi-times" styleClass="rounded-button ui-button-danger" oncomplete="location.reload();">
 							<f:setPropertyActionListener value="#{lis}" target="#{comidaBean.comida}"></f:setPropertyActionListener>
 						</p:commandButton>
 					</p:column>				
