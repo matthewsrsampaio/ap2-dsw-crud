@@ -18,12 +18,7 @@ public class ComidaBean {
 	private Comida messageComida;
 		
 	public String salvar() {
-		try {
-			ComidaDao.salvar(comida);
-			comida = new Comida();
-		} catch(Exception e) {
-			System.out.println("Tem algum mistério em ComidaBean.salvar()");
-		}
+		ComidaDao.salvar(comida);
 		return null;
 	}
 	

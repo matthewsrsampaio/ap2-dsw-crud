@@ -11,13 +11,12 @@ import util.JPA;
 public class ComidaDao {
 
 	public static void salvar(Comida comida) {
-		System.out.println("Double esperado: "+comida.getPrecoPorKg());
-		System.out.println("Tipo de comida esperado: "+comida.getTipoComida());
 		EntityManager em = JPA.criarEntityManager(); //Esse tipo de instanciação fica dentro do pq para cada chamada do método eu vou criar uma nova instância desse carinha. 
-		em.getTransaction().begin();
-		em.persist(comida);
-		em.getTransaction().commit();
-		em.close();
+			em.getTransaction().begin();
+			em.persist(comida);
+			em.getTransaction().commit();
+			em.close();
+		}
 	}
 	
 	public static List<Comida> buscarTodos(){
