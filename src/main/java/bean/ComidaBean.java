@@ -4,23 +4,29 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import dao.ComidaDao;
 import entity.Comida;
 
-@SessionScoped //Uma unica instancia do bean sera compartilhada entre várias solicitações do usuário dentro da mesma sessão.
 @ManagedBean // Usado para controlar a interface
 public class ComidaBean {
 	
 	private Comida comida = new Comida();
 	private List<Comida> listaComida;
 	private Comida messageComida;
+	
+	public void clear() {
+        comida.setTipoComida(null);
+        comida.setPrecoPorKg(null);
+    }
 		
 	public String salvar() {
 		try {
 			ComidaDao.salvar(comida);
+			String texto = comida.toString();
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Info =>", texto));
+			clear();
 			return null;
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -42,7 +48,6 @@ public class ComidaBean {
 		try {
 			ComidaDao.deletar(comida);
 			listaComida = ComidaDao.buscarTodos();
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, " =>", "Deletado com sucesso!"));
 			return null;
 		}catch(Exception e) {
 			e.printStackTrace();
