@@ -17,14 +17,13 @@
 			<button onclick="window.location.href = 'index.xhtml'">HOME</button>
 		</div>
 		<br/>
-		<div>
 			<h:form id="form" style="display: flex; justify-content: center">
 				
 				<p:dataTable id="listaTabela" value="#{comidaBean.listaComida}" var="lis" rowKey="#{lis.id}" style="width: 90%; height: 70%;" selectionMode="single">
 						<f:facet name="header"> Cadastro de comidas
 							<div>
-							<br/>
-							<br/>
+								<br/>
+								<br/>
 								<p:commandButton id="Info" value="Descobrir o maior ID" action="#{comidaBean.info()}" icon="pi pi-bell" styleClass="rounded-button ui-button-warning"/>
 								<p:messages id="messages" showDetail="true" closable="true">
 	            					<p:autoUpdate/>
