@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import dao.ComidaDao;
 import entity.Comida;
 
-@ManagedBean
+@SessionScoped //Uma unica instancia do bean sera compartilhada entre várias solicitações do usuário dentro da mesma sessão.
+@ManagedBean // Usado para controlar a interface
 public class ComidaBean {
 	
 	private Comida comida = new Comida();
@@ -21,13 +23,19 @@ public class ComidaBean {
 			ComidaDao.salvar(comida);
 			return null;
 		}catch(Exception e) {
-			return "Bucho em ComidaBean.salvar() -> " + e;
+			e.printStackTrace();
+			return "Bucho em ComidaBean.salvar()";
 		}
 	}
 	
 	public List<Comida> buscarTodos() {
-		listaComida = ComidaDao.buscarTodos();
-		return listaComida;
+	    try {
+	        listaComida = ComidaDao.buscarTodos();
+	        return listaComida;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return null;
+	    }
 	}
 	
 	public String deletar() {
@@ -37,7 +45,8 @@ public class ComidaBean {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, " =>", "Deletado com sucesso!"));
 			return null;
 		}catch(Exception e) {
-			return "Bucho em ComidaBean.deletar() -> " + e;
+			e.printStackTrace();
+			return "Bucho em ComidaBean.deletar()";
 		}
 	}
 	
@@ -46,7 +55,8 @@ public class ComidaBean {
 			String texto = ComidaDao.buscarPorId(comida.getId()).toString();
 	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Info =>", texto));
 		}catch(Exception e) {
-			System.out.println("Bucho em ComidaBean.infoItem()" + e);
+			e.printStackTrace();
+			System.out.println("Bucho em ComidaBean.infoItem()");
 		}
 	}
 	
@@ -62,7 +72,8 @@ public class ComidaBean {
 			String texto = ComidaDao.buscarPorId(maiorId).toString();
 	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Informação sobre o Objeto com maior ID => ", texto));
 		}catch(Exception e) {
-			System.out.println("Bucho em ComidaBean.info() " + e);
+			e.printStackTrace();
+			System.out.println("Bucho em ComidaBean.info()");
 		}
     }
 	
