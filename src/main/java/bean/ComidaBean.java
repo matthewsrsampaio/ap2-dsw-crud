@@ -38,17 +38,14 @@ public class ComidaBean {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Info =>", texto));
 	}
 	
-	public void info(Comida comida) {
+	public void info() {
 		listaComida = ComidaDao.buscarTodos();
-		Integer maiorId = 0;
-		for(Comida bt :  listaComida) {
-			if(bt.getId() > 0) {
-				maiorId = bt.getId();
+		Integer maiorId = Integer.MIN_VALUE;
+		for(Comida objComida :  listaComida) {
+			if(objComida.getId() > maiorId) {
+				maiorId = objComida.getId();
 			}
 		}
-		
-		ComidaDao.buscarPorId(maiorId);
-		
 		String texto = ComidaDao.buscarPorId(maiorId).toString();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Informação sobre o Objeto com maior ID => ", texto));
     }
