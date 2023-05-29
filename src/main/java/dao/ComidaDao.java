@@ -10,36 +10,56 @@ import util.JPA;
 
 public class ComidaDao {
 
-	public static void salvar(Comida comida) {
-		EntityManager em = JPA.criarEntityManager(); //Esse tipo de instanciação fica dentro do pq para cada chamada do método eu vou criar uma nova instância desse carinha. 
-			em.getTransaction().begin();
-			em.persist(comida);
-			em.getTransaction().commit();
+	public static void salvar(Comida comida) throws Exception {
+	    EntityManager em = JPA.criarEntityManager();
+	    try {
+	        em.getTransaction().begin();
+	        em.persist(comida);
+	        em.getTransaction().commit();
+	    } catch (Exception e) {
+	        throw e;
+	    } finally {
+	        em.close();
+	    }
+	}
+	
+	public static List<Comida> buscarTodos() throws Exception {
+		EntityManager em = JPA.criarEntityManager();
+		try {
+			Query query = em.createQuery("select c from Comida c");
+			List<Comida> lista = query.getResultList();
+			return lista;
+		}catch(Exception e) {
+			throw e;
+		} finally {
 			em.close();
 		}
-	
-	public static List<Comida> buscarTodos(){
-		EntityManager em = JPA.criarEntityManager();
-		Query query = em.createQuery("select c from Comida c");
-		List<Comida> lista = query.getResultList();
-		em.close();
-		return lista;
 	}
 
-	public static void deletar(Comida comida) {
+	public static void deletar(Comida comida) throws Exception {
 		EntityManager em = JPA.criarEntityManager();
-		em.getTransaction().begin();
-		comida = em.find(Comida.class, comida.getId());
-		em.remove(comida);
-		em.getTransaction().commit();
-		em.close();
+		try {
+			em.getTransaction().begin();
+			comida = em.find(Comida.class, comida.getId());
+			em.remove(comida);
+			em.getTransaction().commit();
+		}catch(Exception e) {
+			throw e;
+		}finally {
+			em.close();
+		}
 	}
 	
-	public static Comida buscarPorId(Integer id) {
+	public static Comida buscarPorId(Integer id) throws Exception{
 		EntityManager em = JPA.criarEntityManager();
-		Comida comida = em.find(Comida.class, id);
-		em.close();
-		return comida;
+		try {
+			Comida comida = em.find(Comida.class, id);
+			return comida;
+		}catch(Exception e) {
+			throw e;
+		}finally {
+			em.close();
+		}
 	}
 	
 }

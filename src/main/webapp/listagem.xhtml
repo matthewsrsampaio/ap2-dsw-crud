@@ -25,7 +25,7 @@
 								<br/>
 								<br/>
 								<p:commandButton id="Info" value="Descobrir o maior ID" action="#{comidaBean.info()}" icon="pi pi-bell" styleClass="rounded-button ui-button-warning"/>
-								<p:messages id="messages" showDetail="true" closable="true">
+								<p:messages id="messages" showDetail="true" closable="true" style="justify-content:center; display:flex">
 	            					<p:autoUpdate/>
 	        					</p:messages>
 							</div>
@@ -48,7 +48,7 @@
 					</p:column>
 										
 					<p:column headerText="Deletar" style="width:5%; text-align: center;">
-						<p:commandButton value="Deletar" action="#{comidaBean.deletar}" icon="pi pi-times" styleClass="rounded-button ui-button-danger" oncomplete="location.reload();">
+						<p:commandButton value="Deletar" action="#{comidaBean.deletar}" icon="pi pi-times" styleClass="rounded-button ui-button-danger" oncomplete="location.reload()">
 							<f:setPropertyActionListener value="#{lis}" target="#{comidaBean.comida}"></f:setPropertyActionListener>
 						</p:commandButton>
 					</p:column>				
