@@ -27,8 +27,6 @@ public class Comida {
 	@Temporal(TemporalType.DATE)
 	@Column(columnDefinition = "DATE")
 	private Date fabricacao = new Date();
-		
-	
 	
 	@Override
 	public String toString() {

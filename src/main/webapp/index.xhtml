@@ -14,11 +14,15 @@
 		<button onclick="window.location.href = 'listagem.xhtml'" style="cursor: pointer;">Listagem</button>
 	  	<br/>
 		<h:form id="homeForm">
+			<div>
+				<p:outputLabel style="display: flex; justify-content: center; font-size:50px">Cadastro</p:outputLabel>
+			</div>
+			<br/>
 			<p:messages id="messages" showDetail="true" closable="true" style="justify-content:center; display:flex">
 				<p:autoUpdate/>
 			</p:messages>
 			<div style="display: flex; justify-content: center">
-				<p:panel id="CadastroComida" header="Cadastro de Comida">
+				<p:panel id="CadastroComida" header="Cadastrar comida">
 					<p:panelGrid columns="1">
 						<p:outputLabel value="Tipo de Comida: " for="inputTipoComida"/>
 						<p:inputText value="#{comidaBean.comida.tipoComida}" id="inputTipoComida"/>
