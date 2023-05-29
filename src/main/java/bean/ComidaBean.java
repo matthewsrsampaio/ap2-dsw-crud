@@ -20,7 +20,7 @@ public class ComidaBean {
 	public void clear() throws Exception{
 		try {
 			comida.setTipoComida(null);
-	        comida.setPrecoPorKg(null);
+			comida.setPrecoPorKg(null);
 		}catch(Exception e) {
 			throw e;
 		}
@@ -60,7 +60,7 @@ public class ComidaBean {
 	public void infoItem(Comida comida) throws Exception {
 		try {
 			String texto = ComidaDao.buscarPorId(comida.getId()).toString();
-	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Info =>", texto));
+	        	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Info =>", texto));
 		}catch(Exception e) {
 			throw e;
 		}
@@ -76,7 +76,7 @@ public class ComidaBean {
 				}
 			}
 			String texto = ComidaDao.buscarPorId(maiorId).toString();
-	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Informação sobre o Objeto com maior ID => ", texto));
+	        	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Informação sobre o Objeto com maior ID => ", texto));
 		}catch(Exception e) {
 			throw e;
 		}
