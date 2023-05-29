@@ -11,11 +11,8 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
 
-
-
 @Entity
 public class Comida {
-
 	@Id
 	@GeneratedValue
 	private Integer id;
@@ -30,8 +27,10 @@ public class Comida {
 	
 	@Override
 	public String toString() {
-		return "id=" + id + ", tipoComida=" + tipoComida + ", precoPorKg=" + precoPorKg + ", fabricacao="
-				+ fabricacao + "\n";
+		return "id=" + id +
+			", tipoComida=" + tipoComida + 
+			", precoPorKg=" + precoPorKg + 
+			", fabricacao=" + fabricacao + "\n";
 	}
 	
 	public Integer getId() {
@@ -58,7 +57,4 @@ public class Comida {
 	public void setFabricacao(Date fabricacao) {
 		this.fabricacao = fabricacao;
 	}
-	
-	
-	
 }
