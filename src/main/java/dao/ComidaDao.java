@@ -13,13 +13,13 @@ public class ComidaDao {
 	public static void salvar(Comida comida) throws Exception {
 	    EntityManager em = JPA.criarEntityManager();
 	    try {
-	        em.getTransaction().begin();
-	        em.persist(comida);
-	        em.getTransaction().commit();
+		    em.getTransaction().begin();
+		    em.persist(comida);
+		    em.getTransaction().commit();
 	    } catch (Exception e) {
-	        throw e;
+		    throw e;
 	    } finally {
-	        em.close();
+		    em.close();
 	    }
 	}
 	
