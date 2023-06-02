@@ -31,7 +31,7 @@ public class ComidaDao {
 			return lista;
 		}catch(Exception e) {
 			throw e;
-		} finally {
+		}finally {
 			em.close();
 		}
 	}

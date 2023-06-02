@@ -10,7 +10,7 @@ import dao.ComidaDao;
 import entity.Comida;
 
 
-@ManagedBean // Usado para controlar a interface
+@ManagedBean
 public class ComidaBean {
 	
 	private Comida comida = new Comida();
@@ -50,7 +50,6 @@ public class ComidaBean {
 	public String deletar() throws Exception {
 		try {
 			ComidaDao.deletar(comida);
-			listaComida = ComidaDao.buscarTodos();
 			return null;
 		}catch(Exception e) {
 			throw e;
@@ -59,7 +58,7 @@ public class ComidaBean {
 	
 	public void infoItem(Comida comida) throws Exception {
 		try {
-			String texto = ComidaDao.buscarPorId(comida.getId()).toString();
+			String texto = comida.toString();
 	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, " Info =>", texto));
 		}catch(Exception e) {
 			throw e;

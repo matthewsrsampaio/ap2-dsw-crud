@@ -7,7 +7,7 @@ import entity.Comida;
 
 public class MainCode {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		/*Comida comida1 = new Comida();
 		comida1.setTipoComida("bife de choriço");
@@ -16,7 +16,7 @@ public class MainCode {
 		ComidaDao.salvar(comida1);
 		ComidaDao.buscarTodos();*/
 		
-		//System.out.println();
+		ComidaDao.deletar(ComidaDao.buscarPorId(81));
 		
 
 		
